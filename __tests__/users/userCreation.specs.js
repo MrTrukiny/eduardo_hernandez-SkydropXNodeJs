@@ -23,6 +23,6 @@ describe('POST: User Creation', () => {
       url: 'http://testurl.com',
       text: 'Test Description 1',
     });
-    expect(response.body.message).toBe('User created succesfully!');
+    expect(response.body.message).toBe('User created successfully!');
   });
 });

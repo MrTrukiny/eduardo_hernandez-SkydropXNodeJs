@@ -49,6 +49,8 @@
     "printWidth": 120
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "sequelize": "^6.6.5",
+    "sqlite3": "^4.2.0"
   }
 }
