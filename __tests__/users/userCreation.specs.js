@@ -1,5 +1,15 @@
 const request = require('supertest');
 const app = require('../../src/app');
+const User = require('../../src/users/user.model');
+const sequelize = require('../../src/config/database');
+
+beforeAll(() => {
+  return sequelize.sync();
+});
+
+beforeEach(() => {
+  return User.destroy({ truncate: true });
+});
 
 describe('POST: User Creation', () => {
   it("Returns '201 Created' when user creation is successful", async () => {
@@ -52,8 +62,8 @@ describe('POST: User Creation', () => {
     const usersList = await User.findAll();
     const savedUser = usersList[0];
     expect(savedUser.email).toBe('testuser1@mail.com');
-    expect(savedUser.firstName).toBe('Test User 1');
-    expect(savedUser.lastName).toBe('Test Resu 1');
+    expect(savedUser.first_name).toBe('Test User 1');
+    expect(savedUser.last_name).toBe('Test Resu 1');
     expect(savedUser.company).toBe('Test Company 1');
     expect(savedUser.url).toBe('http://testurl.com');
     expect(savedUser.text).toBe('Test Description 1');

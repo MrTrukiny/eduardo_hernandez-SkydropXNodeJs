@@ -11,6 +11,12 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "dependencies": {
+    "config": "^3.3.6",
+    "express": "^4.17.1",
+    "sequelize": "^6.6.5",
+    "sqlite3": "^5.0.2"
+  },
   "devDependencies": {
     "cross-env": "^7.0.3",
     "eslint": "^7.32.0",
@@ -47,10 +53,5 @@
     "trailingComma": "all",
     "singleQuote": true,
     "printWidth": 120
-  },
-  "dependencies": {
-    "express": "^4.17.1",
-    "sequelize": "^6.6.5",
-    "sqlite3": "^4.2.0"
   }
 }
