@@ -1,13 +1,21 @@
 const express = require('express');
 const app = express();
-const User = require('./users/user.model');
 
+const userRoutes = require('./user/user.routes');
+
+// Middlewares
+const errorHandlerMiddleware = require('./common/middlewares/errror_handler.middleware');
+const responseHandlerMiddleware = require('./common/middlewares/response_handler.middleware');
+
+// Middlewares: body parsers
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.post('/users/:userId', async (req, res) => {
-  await User.create(req.body);
-  res.status(201).send({ message: 'User created successfully!' });
-});
+// Routes
+app.use(userRoutes);
+
+// Middlewares: custom error and response
+app.use(responseHandlerMiddleware);
+app.use(errorHandlerMiddleware);
 
 module.exports = app;
