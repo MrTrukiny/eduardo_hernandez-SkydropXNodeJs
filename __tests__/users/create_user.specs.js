@@ -12,6 +12,7 @@ beforeEach(() => {
 });
 
 const validUser = {
+  id: 10,
   company: 'Test Company 1',
   email: 'testuser1@mail.com',
   first_name: 'Test User 1',
@@ -45,6 +46,7 @@ describe('POST: User Creation', () => {
     await postUser();
     const usersList = await User.findAll();
     const savedUser = usersList[0];
+    expect(savedUser.id).toBe(10);
     expect(savedUser.email).toBe('testuser1@mail.com');
     expect(savedUser.first_name).toBe('Test User 1');
     expect(savedUser.last_name).toBe('Test Resu 1');

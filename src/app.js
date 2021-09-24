@@ -4,7 +4,7 @@ const app = express();
 const userRoutes = require('./user/user.routes');
 
 // Middlewares
-const errorHandlerMiddleware = require('./common/middlewares/errror_handler.middleware');
+const errorHandlerMiddleware = require('./common/middlewares/error_handler.middleware');
 const responseHandlerMiddleware = require('./common/middlewares/response_handler.middleware');
 
 // Middlewares: body parsers

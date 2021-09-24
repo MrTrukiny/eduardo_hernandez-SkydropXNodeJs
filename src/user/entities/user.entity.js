@@ -1,6 +1,13 @@
-module.exports = function makeBuildUser({}) {
-  return function buildUser({ company, email, first_name, last_name, url, text } = {}) {
+module.exports = function makeBuildUser({ userSchema }) {
+  return async function buildUser({ validationType, ...userData } = {}) {
+    const { error } = await userSchema[validationType].validateAsync(userData);
+    if (error) {
+      throw new Error(error);
+    }
+
+    const { id, company, email, first_name, last_name, url, text } = userData;
     return Object.freeze({
+      getId: () => id,
       getCompany: () => company,
       getEmail: () => email,
       getFirstName: () => first_name,
