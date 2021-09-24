@@ -1,7 +1,8 @@
 function makePostUser({ createUser }) {
   return async function postUser(httpRequest) {
     const { body } = httpRequest;
-    await createUser({ ...body });
+    const { userId } = httpRequest.params;
+    await createUser({ ...body, id: userId || body.id });
     return {
       response: {
         statusCode: 201,

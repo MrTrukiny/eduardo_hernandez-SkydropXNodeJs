@@ -3,6 +3,7 @@ module.exports = function makeUserDAO({ User }) {
     save,
     findById,
     update,
+    erase,
   });
 
   async function save({ ...userData }) {
@@ -23,5 +24,10 @@ module.exports = function makeUserDAO({ User }) {
         where: { id: userId },
       },
     );
+  }
+
+  async function erase({ userId }) {
+    const user = await User.findOne({ where: { id: userId } });
+    await user.destroy();
   }
 };

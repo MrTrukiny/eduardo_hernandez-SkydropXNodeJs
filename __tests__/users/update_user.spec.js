@@ -43,7 +43,7 @@ const putUser = async (id = 10, body = null, options = {}) => {
   return response;
 };
 
-describe('User Update', () => {
+describe('PUT: User Update', () => {
   it("Returns '200 Ok' when valid update request sent from authorized user", async () => {
     const savedUser = await addUser();
     const response = await putUser(savedUser.id, validUpdate);

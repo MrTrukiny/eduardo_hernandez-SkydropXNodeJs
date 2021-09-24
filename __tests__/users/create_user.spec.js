@@ -54,4 +54,20 @@ describe('POST: User Creation', () => {
     expect(savedUser.url).toBe('http://testurl.com');
     expect(savedUser.text).toBe('Test Description 1');
   });
+
+  it('Saves the user to database when user id is sent by params', async () => {
+    const validUser = {
+      company: 'Test Company 1',
+      email: 'testuser1@mail.com',
+      first_name: 'Test User 1',
+      last_name: 'Test Resu 1',
+      url: 'http://testurl.com',
+      text: 'Test Description 1',
+    };
+    await request(app).post('/api/1.0/users/10').send(validUser);
+    const usersList = await User.findAll();
+    const savedUser = usersList[0];
+    expect(usersList.length).toBe(1);
+    expect(savedUser.id).toBe(10);
+  });
 });
