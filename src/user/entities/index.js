@@ -1,6 +1,9 @@
 // Entities
 const makeBuildUser = require('./user.entity');
 
-const buildUser = makeBuildUser({});
+// Validators
+const userSchema = require('../user.schema');
+
+const buildUser = makeBuildUser({ userSchema });
 
 module.exports = buildUser;

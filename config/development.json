@@ -1,10 +1,9 @@
 {
   "database": {
     "database": "skydropx",
-    "username": "my-db-user",
-    "password": "db-p4ss",
-    "dialect": "sqlite",
-    "storage": "./database.sqlite",
+    "username": "mrtrukiny",
+    "password": "*8260NktIrehas-",
+    "dialect": "postgres",
     "loggin": false
   }
 }
