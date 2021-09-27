@@ -1,7 +1,12 @@
 const app = require('./src/app');
 const sequelize = require('./src/config/database');
+const cronJobs = require('./src/crons');
 
-sequelize.sync({ force: true });
+// Initialize DB.
+sequelize.sync();
+
+// Initialize Cronjobs.
+cronJobs.createPendingUsers.start();
 
 const PORT = 3000;
 

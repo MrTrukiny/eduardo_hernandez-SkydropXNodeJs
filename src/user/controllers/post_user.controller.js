@@ -7,7 +7,7 @@ function makePostUser({ createUser }) {
       response: {
         statusCode: 201,
         body: {
-          message: 'User created successfully!',
+          message: 'USER_CREATED',
         },
       },
     };
