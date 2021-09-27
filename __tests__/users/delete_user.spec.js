@@ -1,14 +1,16 @@
 const request = require('supertest');
 const app = require('../../src/app');
-const User = require('../../src/user/user.model');
+const User = require('../../src/user/models/user.model');
 const sequelize = require('../../src/config/database');
 
-beforeAll(() => {
-  return sequelize.sync();
+beforeAll(async () => {
+  if (process.env.NODE_ENV === 'test') {
+    await sequelize.sync();
+  }
 });
 
-beforeEach(() => {
-  return User.destroy({ truncate: true });
+beforeEach(async () => {
+  await User.destroy({ truncate: true });
 });
 
 const validUser = {
@@ -42,9 +44,8 @@ describe('DELETE: User Delete', () => {
 
   it('Returns success message when user delete is successful', async () => {
     const savedUser = await addUser();
-    await deleteUser(savedUser.id);
+    const response = await deleteUser(savedUser.id);
 
-    const inDBUser = await User.findOne({ where: { id: savedUser.id } });
-    expect(inDBUser).toBeNull();
+    expect(response.body.message).toBe('User deleted successfully!');
   });
 });

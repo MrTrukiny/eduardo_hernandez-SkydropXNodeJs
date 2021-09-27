@@ -1,14 +1,16 @@
 const request = require('supertest');
 const app = require('../../src/app');
-const User = require('../../src/user/user.model');
+const User = require('../../src/user/models/user.model');
 const sequelize = require('../../src/config/database');
 
-beforeAll(() => {
-  return sequelize.sync();
+beforeAll(async () => {
+  if (process.env.NODE_ENV === 'test') {
+    await sequelize.sync();
+  }
 });
 
-beforeEach(() => {
-  return User.destroy({ truncate: true });
+beforeEach(async () => {
+  await User.destroy({ truncate: true, restartIdentity: true });
 });
 
 const validUser = {

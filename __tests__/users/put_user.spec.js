@@ -1,14 +1,16 @@
 const request = require('supertest');
 const app = require('../../src/app');
-const User = require('../../src/user/user.model');
+const User = require('../../src/user/models/user.model');
 const sequelize = require('../../src/config/database');
 
-beforeAll(() => {
-  return sequelize.sync();
+beforeAll(async () => {
+  if (process.env.NODE_ENV === 'test') {
+    await sequelize.sync();
+  }
 });
 
-beforeEach(() => {
-  return User.destroy({ truncate: true });
+beforeEach(async () => {
+  await User.destroy({ truncate: true, restartIdentity: true });
 });
 
 const validUser = {
@@ -53,7 +55,7 @@ describe('PUT: User Update', () => {
   it('Returns success message when user update is successful', async () => {
     const savedUser = await addUser();
     const response = await putUser(savedUser.id, validUpdate);
-    expect(response.body.message).toBe('USER_UPDATED');
+    expect(response.body.message).toBe('User updated successfully!');
   });
 
   it('Updates all the updated user info sent into database', async () => {
