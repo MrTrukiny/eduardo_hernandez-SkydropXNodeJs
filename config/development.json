@@ -1,9 +1,0 @@
-{
-  "database": {
-    "database": "skydropx",
-    "username": "mrtrukiny",
-    "password": "*8260NktIrehas-",
-    "dialect": "postgres",
-    "loggin": false
-  }
-}
