@@ -55,9 +55,11 @@ const validUrl = new RegExp(
 const createUser = Joi.object({
   id: Joi.number()
     .external(async (id) => {
-      const user = await userDAO.findById({ userId: id });
-      if (user) {
-        throw new Error('USER_ALREADY_EXISTS');
+      if (id) {
+        const user = await userDAO.findById({ userId: id });
+        if (user) {
+          throw new Error('USER_ALREADY_EXISTS');
+        }
       }
     })
     .messages({

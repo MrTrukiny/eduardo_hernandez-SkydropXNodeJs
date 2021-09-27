@@ -2,6 +2,7 @@
 const makeCreateUser = require('./create_user.usecase');
 const makeUpdateUser = require('./update_user.usecase');
 const makeRemoveUser = require('./remove_user.usecase');
+const makeReadUsers = require('./read_users.usecase');
 
 // Entities
 const buildUser = require('../entities');
@@ -16,5 +17,9 @@ const updateUser = makeUpdateUser({
   findUserById: userDAO.findById,
 });
 const removeUser = makeRemoveUser({ eraseUser: userDAO.erase });
+const readUsers = makeReadUsers({
+  listUsers: userDAO.findAll,
+  createUser,
+});
 
-module.exports = { createUser, updateUser, removeUser };
+module.exports = { createUser, updateUser, removeUser, readUsers };
