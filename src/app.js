@@ -1,20 +1,29 @@
+// Libs
 const express = require('express');
-const app = express();
+const i18next = require('./shared/middlewares/internationalization_handler.middleware');
 
+// Routes
 const userRoutes = require('./user/user.routes');
 
-// Middlewares
-const errorHandlerMiddleware = require('./common/middlewares/error_handler.middleware');
-const responseHandlerMiddleware = require('./common/middlewares/response_handler.middleware');
+// Import Middlewares
+const i18nHttpMiddleware = require('i18next-http-middleware');
+const errorHandlerMiddleware = require('./shared/middlewares/error_handler.middleware');
+const responseHandlerMiddleware = require('./shared/middlewares/response_handler.middleware');
 
-// Middlewares: body parsers
+// Initialize Express App
+const app = express();
+
+// Use Middleware: internationalization
+app.use(i18nHttpMiddleware.handle(i18next));
+
+// Use Middlewares: body parsers
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Routes
 app.use(userRoutes);
 
-// Middlewares: custom error and response
+// Use Middlewares: custom error and response
 app.use(responseHandlerMiddleware);
 app.use(errorHandlerMiddleware);
 

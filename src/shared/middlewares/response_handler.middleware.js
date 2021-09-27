@@ -3,11 +3,16 @@ module.exports = function responseHandlerMiddleware(req, res, next) {
     locals: { response },
   } = { ...res };
   if (response) {
-    if (response.headers) {
+    const { headers, statusCode, body } = response;
+    if (headers) {
       res.set(response.headers);
     }
-    if (!response.statusCode || !response.body) {
+    if (!statusCode || !body) {
       return next(new Error());
+    }
+    // With this line we send responses in different languages.
+    if (body.message) {
+      body.message = req.t(body.message);
     }
     res.status(response.statusCode).json(response.body);
   } else {

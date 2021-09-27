@@ -1,0 +1,15 @@
+{
+  "USER_CREATED": "User created successfully!",
+  "USER_UPDATED": "User updated successfully!",
+  "USER_NOT_FOUND": "User not found!",
+  "USER_DELETED": "User deleted successfully!",
+  "USER_ALREADY_EXISTS": "User already exists!",
+  "ID_INVALID": "Invalid ID number: it must be a positive integer number",
+  "ID_SIZE": "Invalid ID size: it must be less",
+  "EMAIL_INVALID": "Invalid Email, try again with a valid one",
+  "EMAIL_REQUIRED": "Email is required for this request",
+  "FIRST_NAME_SIZE": "First name must be min 2 and max 20 characters",
+  "FIRST_NAME_REQUIRED": "First name is required for this request",
+  "LAST_NAME_SIZE": "Last name must be min 2 and max 20 characters",
+  "URL_INVALID": "Url must have a valid format, try a new one."
+}

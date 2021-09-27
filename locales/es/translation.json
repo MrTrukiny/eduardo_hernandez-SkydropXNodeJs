@@ -1,0 +1,15 @@
+{
+  "USER_CREATED": "Usuario creado satisfactoriamente!",
+  "USER_UPDATED": "Usuario actualizado satisfactoriamente!",
+  "USER_NOT_FOUND": "Usuario no encontrado!",
+  "USER_DELETED": "Usuario eliminado satisfactoriamente!",
+  "USER_ALREADY_EXISTS": "El Usuario ya existe!",
+  "ID_INVALID": "ID inválido: tiene que ser un número entero positivo",
+  "ID_SIZE": "ID inválido: tiene que ser un número menor",
+  "EMAIL_INVALID": "Email inválido, intenta de nuevo con uno válido",
+  "EMAIL_REQUIRED": "El Email es requerido para esta petición",
+  "FIRST_NAME_SIZE": "El Primer nombre debe tener mínimo 2 y máximo 20 caracteres",
+  "FIRST_NAME_REQUIRED": "El Primer nombre es requerido para esta petición",
+  "LAST_NAME_SIZE": "El Apellido debe tener mínimo 2 y máximo 20 caracteres",
+  "URL_INVALID": "La URL debe tener un formato válido, intenta con una nueva"
+}

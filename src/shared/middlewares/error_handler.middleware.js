@@ -13,6 +13,9 @@ module.exports = function errorHandlerMiddleware(error, req, res, next) {
   }
 
   res.status(error.statusCode || 500).json({
-    error: validationMessage || error.message || 'An unknown error ocurred',
+    error:
+      (validationMessage && req.t(validationMessage)) ||
+      (error.message && req.t(error.message)) ||
+      req.t('UNKNOWN_ERROR'),
   });
 };
