@@ -1,9 +1,15 @@
 // DAOs
 const makeUserDAO = require('./user.dao');
+const makePendingUserDAO = require('./pending_user.dao');
 
 // Models
-const User = require('../user.model');
+const User = require('../models/user.model');
+const PendingUser = require('../models/pending_user.model');
 
-const userDAO = makeUserDAO({ User });
+// Utils
+const setPagination = require('../../shared/utils/pagination');
 
-module.exports = { userDAO };
+const userDAO = makeUserDAO({ User, setPagination });
+const pendingUserDAO = makePendingUserDAO({ PendingUser });
+
+module.exports = { userDAO, pendingUserDAO };
