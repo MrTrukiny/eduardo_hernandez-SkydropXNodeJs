@@ -17,6 +17,7 @@ module.exports = function makeReadUsers({ listUsers, createUser }) {
 
     // Create Users not Existent in DB.
     createUsersUsingReqresAPIInfo(userIds, usersListIds, createUser).catch((error) =>
+      // TODO: Log this error
       console.log(error),
     );
 

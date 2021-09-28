@@ -1,21 +1,23 @@
+const { ValidationError } = require('joi');
+const ErrorResponse = require('../utils/custom_error');
+
 module.exports = function errorHandlerMiddleware(error, req, res, next) {
   // TODO: Error logging
   console.error('Error Handler:', error);
 
   const { message } = error;
 
-  let validationMessage;
+  if (error instanceof ValidationError) {
+    error = new ErrorResponse(message, 400);
+  }
   if (message.startsWith('ValidationError:')) {
-    validationMessage = message.split(' ')[1];
+    error = new ErrorResponse(message.split(' ')[1], 404);
   }
   if (message.startsWith('USER_ALREADY_EXISTS')) {
-    validationMessage = message.split(' ')[0];
+    error.message = message.split(' ')[0];
   }
 
   res.status(error.statusCode || 500).json({
-    error:
-      (validationMessage && req.t(validationMessage)) ||
-      (error.message && req.t(error.message)) ||
-      req.t('UNKNOWN_ERROR'),
+    error: (error.message && req.t(error.message)) || req.t('UNKNOWN_ERROR'),
   });
 };

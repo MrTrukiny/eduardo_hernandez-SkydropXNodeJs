@@ -1,4 +1,5 @@
 const sequelize = require('../../config/database');
+const ErrorResponse = require('../../shared/utils/custom_error');
 
 module.exports = function makeUserDAO({ User, setPagination }) {
   return Object.freeze({
@@ -23,7 +24,7 @@ module.exports = function makeUserDAO({ User, setPagination }) {
 
       return user;
     } catch (error) {
-      throw new Error(error);
+      throw new ErrorResponse(error, 404);
     }
   }
 
@@ -46,7 +47,7 @@ module.exports = function makeUserDAO({ User, setPagination }) {
   async function erase({ userId }) {
     const user = await User.findOne({ where: { id: userId } });
     if (!user) {
-      throw new Error('USER_NOT_FOUND');
+      throw new ErrorResponse('USER_NOT_FOUND', 404);
     }
     await user.destroy();
   }

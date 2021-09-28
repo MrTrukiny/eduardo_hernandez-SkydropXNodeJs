@@ -1,5 +1,6 @@
 const Joi = require('joi');
 const { userDAO } = require('./data_access');
+const ErrorResponse = require('../shared/utils/custom_error');
 
 /**
  * Regular Expression for URL validation.
@@ -58,7 +59,7 @@ const createUser = Joi.object({
       if (id) {
         const user = await userDAO.findById({ userId: id });
         if (user) {
-          throw new Error('USER_ALREADY_EXISTS');
+          throw new ErrorResponse('USER_ALREADY_EXISTS', 400);
         }
       }
     })
@@ -91,7 +92,7 @@ const updateUser = Joi.object({
     'number.base': 'ID_INVALID',
     'number.unsafe': 'ID_SIZE',
   }),
-  company: Joi.string().min(3).max(30).allow(''),
+  company: Joi.string().min(3).max(30).allow('', null),
   email: Joi.string().email().messages({
     'string.email': 'EMAIL_INVALID',
   }),
@@ -106,7 +107,7 @@ const updateUser = Joi.object({
     'string.max': 'LAST_NAME_SIZE',
   }),
   url: Joi.string().regex(validUrl).message('URL_INVALID'),
-  text: Joi.string().allow(''),
+  text: Joi.string().allow('', null),
   createdAt: Joi.date(),
   updatedAt: Joi.date(),
 });

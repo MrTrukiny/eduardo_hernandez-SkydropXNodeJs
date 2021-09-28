@@ -1,8 +1,13 @@
-module.exports = function makeUpdateUser({ buildUser, editUser, findUserById }) {
+module.exports = function makeUpdateUser({
+  buildUser,
+  editUser,
+  findUserById,
+  ErrorResponse,
+}) {
   return async function updateUser({ id, ...userData }) {
     const existingUser = await findUserById({ userId: id });
     if (!existingUser) {
-      throw new Error('USER_NOT_FOUND');
+      throw new ErrorResponse('USER_NOT_FOUND', 404);
     }
     const userUpdated = await buildUser({
       id,

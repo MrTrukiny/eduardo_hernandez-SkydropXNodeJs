@@ -9,7 +9,9 @@ module.exports = async function createUsersUsingReqresAPIInfo(
   // Reqres only have 12 users!!, so I'm going to apply a filter for userIds <= 12.
   let userIdsNotFound =
     userIdsReq &&
-    userIdsReq.filter((userId) => !userIdsRes.includes(Number(userId)) && userId <= 12);
+    // I will remove 12 validation with the intention of see pending users cronjob working.
+    // userIdsReq.filter((userId) => !userIdsRes.includes(Number(userId)) && userId <= 12);
+    userIdsReq.filter((userId) => !userIdsRes.includes(Number(userId)));
 
   // Get Users from ReqresAPI.
   const usersFromReqres =
