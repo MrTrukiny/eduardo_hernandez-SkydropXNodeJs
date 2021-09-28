@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start:dev": "cross-env NODE_ENV=development npm run migrate && cross-env NODE_ENV=development nodemon index",
-    "start": "cross-env NODE_ENV=development npm run migrate && cross-env NODE_ENV=development pm2 start index.js -i max",
+    "start": "cross-env NODE_ENV=production npm run migrate && cross-env NODE_ENV=production pm2 start index.js -i max",
     "test": "cross-env NODE_ENV=test jest --watch",
     "test:staging": "cross-env NODE_ENV=staging npm run migrate && cross-env NODE_ENV=staging jest --all --runInBand --forceExit",
     "migrate": "sequelize-cli db:migrate",
@@ -16,7 +16,7 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.21.4",
-    "config": "^3.3.6",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "i18next": "^21.1.0",
     "i18next-fs-backend": "^1.1.1",
