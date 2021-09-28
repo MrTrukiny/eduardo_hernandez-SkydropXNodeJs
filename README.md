@@ -16,7 +16,15 @@ url: 'http://exampleurl1.com',
 text: 'Example Description 1'
 ```
 
-This back-end project was created with:
+## Documentation
+
+You can see full documentation with cURL examples going to this link: [Postman Documentation](https://documenter.getpostman.com/view/7063210/UUxzAnUf).
+
+## Deployment
+
+You can explore a production ready deployment running on Heroku here: [SkydropxNodejs](https://skydropxnodejs.herokuapp.com/api/1.0/users).
+
+### This back-end project was created with:
 
 - Technologies:
 
@@ -34,15 +42,11 @@ This back-end project was created with:
 
 - Project structure and design:
 
-  - Clean architecture using _feature-oriented_ paradigm and *snake_case* for directories and files naming.
+  - Clean architecture using _feature-oriented_ paradigm and _snake_case_ for directories and files naming.
 
 **Highlighted-Note!**
 
-I created a Cronjob that runs every 10 seconds (time could be change easily). It consist on a function that searchs for pending ids of users that previously was requested using the GET endpoint, but for any reason couldn't be created (Reqres fails, our DB fails or our SERVER fails). It will search a table called **pending_users** for any **pending_ids** to be created and then will search into *Reqres* for user info to create it into our DB. It works wonderful!!
-
-## Documentation
-
-You can see full documentation with cURL examples going to this link: [Postman Documentation](https://documenter.getpostman.com/view/7063210/UUxzAnUf)
+I created a Cronjob that runs every 10 seconds (time could be change easily). It consist on a function that searchs for pending ids of users that previously was requested using the GET endpoint, but for any reason couldn't be created (Reqres fails, our DB fails or our SERVER fails). It will search a table called **pending_users** for any **pending_ids** to be created and then will search into _Reqres_ for user info to create it into our DB. It works wonderful!!
 
 # How to run this project locally?
 
@@ -73,4 +77,5 @@ Running instructions:
 Thank you for this opportunity.
 
 ### I hope you enjoy it!
+
 ## Best regards, MrTrukiny!
