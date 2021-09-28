@@ -1,0 +1,51 @@
+#### --- PRODUCTION --- ####
+
+## DATABASE
+POSTGRES_DB_NAME_PROD='skydropx-prod'
+POSTGRES_USERNAME_PROD='example'
+POSTGRES_PASSWORD_PROD='example'
+
+SEQUELIZE_DB_DIALECT_PROD='postgres'
+SEQUELIZE_DB_HOST_PROD='localhost'
+SEQUELIZE_DB_LOGGING_PROD=false
+
+#### --- END PRODUCTION --- ####
+
+#### --- STAGING --- ####
+
+## DATABASE
+POSTGRES_DB_NAME_STAG='skydropx-stag'
+POSTGRES_USERNAME_STAG='example'
+POSTGRES_PASSWORD_STAG='example'
+
+SEQUELIZE_DB_DIALECT_STAG='postgres'
+SEQUELIZE_DB_HOST_STAG='localhost'
+SEQUELIZE_DB_LOGGING_STAG=false
+
+#### --- END PRODUCTION --- ####
+
+#### --- DEVELOPMENT --- ####
+
+## DATABASE
+SQLITE_DB_NAME_DEV='skydropx-dev'
+SQLITE_USERNAME_DEV='sqlite'
+SQLITE_PASSWORD_DEV='*sqlite'
+
+SEQUELIZE_DB_DIALECT_DEV='sqlite'
+SEQUELIZE_DB_STORAGE_DEV='./development.sqlite'
+SEQUELIZE_DB_LOGGING_DEV=false
+
+#### --- END PRODUCTION --- ####
+
+#### --- TEST --- ####
+
+## DATABASE
+SQLITE_DB_NAME_TEST='skydropx-test'
+SQLITE_USERNAME_TEST='sqlite'
+SQLITE_PASSWORD_TEST='sqlite'
+
+SEQUELIZE_DB_DIALECT_TEST='sqlite'
+SEQUELIZE_DB_STORAGE_TEST=':memory:'
+SEQUELIZE_DB_LOGGING_TEST=false
+
+#### --- END PRODUCTION --- ####

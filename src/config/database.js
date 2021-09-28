@@ -1,9 +1,10 @@
 const Sequelize = require('sequelize');
-const config = require('config');
+const dbProfiles = require('../../config/db/config');
+const { nodeEnv } = require('../../config');
 
-const dbConfig = config.get('database');
+const currentDbProfile = dbProfiles[nodeEnv];
 
-const { database, dialect, logging, password, storage, username } = dbConfig;
+const { database, dialect, logging, password, storage, username } = currentDbProfile;
 
 const sequelize = new Sequelize(database, username, password, {
   dialect,
